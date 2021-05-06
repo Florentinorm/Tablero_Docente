@@ -1,0 +1,71 @@
+#titulo {
+    border-block-end: 5px solid #FFC312;
+    background-color: rgba(23, 24, 25);
+    margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+#pen {
+    margin-top: 20px;
+    height: 0%;
+    width: 1000px;
+    border: 2px solid black;
+}
+
+#diente {
+    width: 130px;
+    font-size: 25px;
+    margin-top: -22px;
+    margin-left: 8px;
+    background: rgb(11, 119, 138);
+    
+}
+
+#pla {
+    margin-top: 20px;
+    height: 0%;
+    width: 1000px;
+    border: 2px solid black;
+}
+
+#near {
+    width: 90px;
+    font-size: 25px;
+    margin-top: -22px;
+    margin-left: 8px;
+    background: rgb(11, 119, 138);
+}
+#curso2 {
+    background-color: rgb(153, 153, 153);
+    padding: 20px;
+    width: 300px;
+    border-radius: 5px;
+    position: relative;
+}
+
+#imagenCurso {
+    width: 260px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* agregar contenido */
+
+#ver{
+    background: rgba(23, 24, 25, 0.829);
+    border-radius: 20px;
+    height: 0%;
+}
+#contenido{
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.829);
+    margin: 0px auto;
+}
+#modal-examen{
+    margin-top: 20px;
+    height: 100%;
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 20px;
+}

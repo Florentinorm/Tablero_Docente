@@ -1,0 +1,246 @@
+{{> header}}
+{{> navbarDocente}}
+<style>
+    body {
+        background-image: linear-gradient(-200deg, rgb(11, 119, 138) 60%, white 60%);
+    }
+</style>
+<section>
+    {{!-- titulo --}}
+    <section id="titulo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <h1 style="color: #FFC312;">Crear Curso 
+                    </h1>
+                </div>
+            </div>
+        </div> 
+    </section>
+    {{!-- boton para crear curso --}}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">Agregar Nuevo Curso</button>
+                    {{!-- modal crear curso--}}
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header" style="text-align: center;">
+                                    <h5 class="modal-title" id="exampleModalLabel">Crear Un Curso</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/docentes/crearCurso/add" method="POST">
+                                        <div class="mb-3">
+                                            <label for="recipient-name" class="col-form-label">Nombre:</label>
+                                            <input type="text" class="form-control" id="nombre" name="nombre">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="message-text" class="col-form-label">Descripción:</label>
+                                            <textarea class="form-control" name="descripcion"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="recipient-name" class="col-form-label">Grupo:</label>
+                                            <select class="form-select form-select-sm" name="cvGrupo"
+                                                aria-label=".form-select-sm example" name="CvGrupo"> >
+                                                <option selected>Seleccionar Grupo</option>
+                                                {{#each grupo}}
+                                                <option value="{{_id}}">{{Semestre}} - {{NombreGrupo}} - {{Carrera}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="recipient-name" class="col-form-label">Asigantura:</label>
+                                            <select class="form-select form-select-sm"
+                                                aria-label=".form-select-sm example" name="cvAsignatura">
+                                                <option selected>Seleccionar una Asigantura</option>
+                                                {{#each asignatura}}
+                                                <option value="{{_id}}">{{NombreAsignatura}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="recipient-name" class="col-form-label">Agregar Imagen:</label>
+                                            <select class="form-select form-select-sm"
+                                                aria-label=".form-select-sm example" name="cvImagen">
+                                                <option selected>Seleccionar Imagen</option>
+                                                {{#each imagen}}
+                                                    <option value="{{_id}}">{{nombre}}</option>
+                                                {{/each}}
+                                            </select>
+                                            <div class="container">
+                                                <div class="row" aling="center">
+                                                    <div class="col">
+                                                    </div>
+                                                    <div class="col">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%"
+                                                            height="100%" fill="currentColor" class="bi bi-image-fill"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M.002 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-12a2 2 0 0 1-2-2V3zm1 9v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12zm5-6.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z" />
+                                                        </svg>
+                                                    </div>
+                                                    <div class="col">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer" align="center">
+                                            <button type="button" class="btn btn-danger"
+                                                data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-success">Guardar</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {{!-- Termina Modal Crear Curso --}}
+                </div>
+            </div>
+        </div>
+    </section><br>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm" id="pen">
+                    <h1 id="diente">Pendientes</h1>
+                    <div><br>
+                        <div class="container">
+                            <div class="row">
+                                {{#each curso}}
+                                {{#if_eq_string this.estado 'pendiente'}}
+                                <div class="col-sm">
+                                    <div id="curso2">
+                                        {{#each @root.imagen}}
+                                            {{#if_eq_string this._id ../this.cvImagen}}
+                                                <img src="{{ruta}}"
+                                                alt="" id="imagenCurso">
+                                            {{/if_eq_string}}
+                                        {{/each}}
+                                        <h5>{{nombre}}</h5>
+                                        {{#each @root.grupo}}
+                                            {{#if_eq_string this._id ../this.cvGrupo}}
+                                                <h6>Grupo: {{Semestre}} - {{NombreGrupo}}</h6>
+                                            {{/if_eq_string}}
+                                        {{/each}}
+                                        
+                                        <details>
+                                            <summary>Descripción</summary>
+                                            <p class="card-text" style="text-align: justify;">{{descripcion}}</p>
+                                        </details><br>
+                                        <div style="width: 300px;">
+                                            <button type="button" class="btn btn-danger"><a
+                                                    href="/docentes/crearCurso/eliminar/{{_id}}"
+                                                    class="link">Eliminar</a></button>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#editar">Editar</button>
+                                                <button type="button" class="btn btn-success"><a href="/docentes/contenido/{{_id}}"
+                                                    class="link">Contenido</a></button>
+                                                {{!-- <button type="button" class="btn btn-success"><a href="/docentes/contenido"
+                                                    class="link">Contenido</a></button> --}}
+                                            {{!-- Modal Editar Curso--}}
+                                            <div class="modal fade" id="editar" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header" style="text-align: center;">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Crear Un
+                                                                Curso</h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="/docentes/crearCurso/edit/{{_id}}" method="POST">
+                                                                <div class="mb-3">
+                                                                    <label for="recipient-name"
+                                                                        class="col-form-label">Nombre:</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="recipient-name" name="nombre" value="{{nombre}}">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="message-text"
+                                                                        class="col-form-label">Descripción:</label>
+                                                                    <textarea class="form-control"
+                                                                        id="message-text" name="descripcion">{{descripcion}}</textarea>
+                                                                </div>
+                                                                <div class="modal-footer" align="center">
+                                                                    <button type="button" class="btn btn-danger"
+                                                                        data-bs-dismiss="modal">Cancelar</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-success">Guardar</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{!-- Termina Modal Editar Curso --}}
+                                        </div>
+                                    </div><br>
+                                </div>
+                                {{/if_eq_string}}
+                                {{/each}}
+                                
+                            </div><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm" id="pla">
+                    <h1 id="near">Planear</h1>
+                    <div>
+                        <div class="container">
+                            <div class="row">
+                                {{#each curso}}
+                                {{#if_eq_string this.estado 'inactivo'}}
+                                    {{#unless esPlaneado}}
+                                        <div class="col-sm">
+                                            <div id="curso2">
+                                                <img src="/images/Programacion.webp"
+                                                    alt="" id="imagenCurso">
+                                                <h5>{{nombre}}</h5>
+                                                <h6>Grupo: {{cvGrupo}} </h6>
+                                                <details>
+                                                    <summary>Descripción</summary>
+                                                    <p class="card-text">{{descripcion}}</p>
+                                                </details><br>
+                                                <div style="width: 300px;">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-sm">
+                                                                <button type="button" class="btn btn-danger"><a href="/"
+                                                            class="link">Eliminar</a></button>
+                                                            </div>
+                                                            <div class="col-sm">
+                                                            <button type="button" class="btn btn-success"><a href="/docentes/planear/{{_id}}"
+                                                            class="link">Planear</a></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><br>
+                                        </div>
+                                    {{/unless}}
+                                {{/if_eq_string}}
+                                {{/each}}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section> <br>

@@ -1,0 +1,50 @@
+.logo {
+    width: 40%;
+    height: 30%;
+}
+.Navegacion{
+margin-top: -3%;
+}
+.contenido > div{
+    background: #f2f2f2 ;
+    padding: 25px;
+    border: 1px solid grey;
+  }
+  .rendimiento{
+width: 75%;
+  }
+  .cuadros{
+    background-color: rgba(0, 0, 0, 0.5) !important;
+
+  }
+  .selected{
+    width: 80%;
+    background-color: rgb(233, 233, 233) !important;
+  }
+  .nombrealumno > p{
+      color: azure;
+  }
+  .nombrealumno{
+    width: 31%;
+    right: 6%;
+}
+  .imagenalumno{
+    width: 50%;
+    right: 1%;
+}
+.img{
+  margin-top: 5%;
+}
+.botonavance{
+    width: 30%;
+}
+.barra{
+  margin-top: 0%;
+  right: 6%;
+  padding-top: 2.7%;
+}
+.mensaje{
+  color: rgb(255, 247, 238);
+  height: 50%;
+  margin-top: 50%;
+}

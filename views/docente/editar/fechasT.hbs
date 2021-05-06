@@ -1,0 +1,67 @@
+<style>
+      body {
+        background-image: linear-gradient(-200deg, rgb(11, 119, 138) 60%, white 60%);
+      }
+    </style>
+    <section id="titulo">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <h1 style="color: #FFC312;">Agregar Fechas
+            </h1>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <br>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+          </div>
+          <div class="col-sm" style="background: darkgrey; border-radius: 15px;">
+            <form action="/docentes/editT/{{tema._id}}" method="POST">
+              <div style="text-align: center;">
+                <img src="/images/tema.png" alt="" width="300px">
+              </div>
+              <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <label for="inputPassword6" class="col-form-label">Fecha de inicio:</label>
+                </div>
+                <div class="col-auto">
+                  <input type="date" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline"
+                    name="fechaInicio">
+                </div>
+              </div> <br>
+              <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <label for="inputPassword6" class="col-form-label">Fecha de Fin:</label>
+                  &nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="col-auto">
+                  <input type="date" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline"
+                    name="fechaFin">
+                </div>
+              </div><br>
+              <div class="container">
+                <div class="row" style="text-align: center;">
+                  <div class="col-sm">
+                    <button type="button" class="btn btn-danger"><a
+                        href="javascript: history.go(-1)">Cancelar</a></button>
+                  </div>
+                  <div class="col-sm">
+                    <button type="submit" class="btn btn-success">Planear</button>
+                  </div>
+                </div>
+              </div>
+            </form> <br>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
+      </div>
+      <br>
+    </section>

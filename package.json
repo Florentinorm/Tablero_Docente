@@ -1,0 +1,31 @@
+{
+    "name": "courses",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "nodemon ./bin/www"
+    },
+    "dependencies": {
+        "@handlebars/allow-prototype-access": "^1.0.5",
+        "body-parser": "^1.19.0",
+        "connect-flash": "^0.1.1",
+        "cookie-parser": "~1.4.4",
+        "debug": "~2.6.9",
+        "ember-truth-helpers": "^3.0.0",
+        "express": "~4.16.1",
+        "express-handlebars": "^5.3.0",
+        "express-session": "^1.17.1",
+        "express-validator": "^6.10.0",
+        "hbs": "~4.0.4",
+        "http-errors": "~1.6.3",
+        "mongoose": "^5.11.15",
+        "morgan": "~1.9.1",
+        "multer": "^1.4.2",
+        "nodemailer": "^6.5.0",
+        "nodemon": "^2.0.7",
+        "req-flash": "0.0.3"
+    },
+    "devDependencies": {
+        "handlebars": "^4.5.0"
+    }
+}
